@@ -1,7 +1,5 @@
 import sys
 sys.path.insert(1,"/home/max/Dokumente/Code/BIO-LGCA/biolgca-develop")
-#sys.path.insert(1,"/home/max/Dokumente/Uni/Master/Masterarbeit/Code/BIO LGCA/biolgca-develop")
-#sys.path.insert(1,"/mnt/1dfb303e-22df-4c6f-ad16-e8242069b27a/home/max/Dokumente/Uni-Zeug/Master/Masterarbeit/Code/BIO-LGCA/biolgca-develop")
 from lgca import get_lgca
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.animation import FuncAnimation
