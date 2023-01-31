@@ -1,10 +1,10 @@
 '''
-This document contains a stream lined and improved appon version of CA1D.py
-It was mainly build to make the document more readable.
-IMPORTANT: inversion of the update array in class CA()
-    -> from [000,001,010,011,100,101,110,111] to [111,110,101,100,011,010,001,000] 
-    -> new notation same as Wolfram's
-    -> deterministic rule: bit-array of outputs = rule number
+Many of the differences between this code and the others are due to this one being the first iteration
+which was built on top off in the subsequent steps. However, it isn't the first code I wrote for the thesis
+and it therefore borrows a lot from even earlier iterations. 
+Some of the choices are only feasible in 1D and had to be changed for higher order systems.
+Hence, the length of the code could conceivably be reduced drastically, but I saw no need for that 
+while writting the thesis.
 '''
 import numpy as np 
 import matplotlib.pyplot as plt
