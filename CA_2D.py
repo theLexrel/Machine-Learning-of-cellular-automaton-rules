@@ -1,3 +1,16 @@
+"""
+This file is arguably to one in most need of comments. However, it is also the one which should be 
+rewritten the most.
+The general style is different than in other files which used a class. The reason is that this code
+underwent substancial rewrites to make it compatible with numba. This was done to increase the perfromance
+which was severly lacking. But, after applying these changes, it turned out that the bottleneck is
+the sklearn algorithm, not the other functions in the code. 
+WARNING: If a certain number of examples in the training set is reached, the code will be killed by 
+  the system when running it. The threshold seems to depend on the amount of RAM the system has available.
+  As the point of failure was determined to be the fitting process of sklearn.LogisticRegression(), no other
+  solution was found than to just limit the dimension of the time series to the maximum amount the code will
+  still be able to process without being killed by the system.
+"""
 import numpy as np 
 import matplotlib.pyplot as plt
 
