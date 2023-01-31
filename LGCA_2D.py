@@ -69,7 +69,19 @@ def brier_error(y_true,y_pred):
 class MLonLGCA:
 
     def __init__(self,_Restchannels, _Neighborhood = 'Neumann',_interaction='total',_interactionMode=True, _delta=False):
-        
+        """
+        There are 2 modes set up:
+        _interactionMode=True:  this is the ML algorithm version of section 6.2, with which the 
+                                interaction strength can be extracted
+        _interactionMode=False: the version of section 6.3 which performs a linear approximation
+        ........
+        _interaction: dictates the interaction term input if _interactionMode=True
+            -'alignment': input for interaction alignment, total flux in interaction neighborhood
+            -'aggregation': input for aggregation, mass gradient in interaction neighborhood
+            -'total': the 'total version' contains both of the above
+            - else: if non of the above, then random walk is implemented with input = 1
+        _delta: dictates whether or not the delta-fct approx is included if _interactionMode=False
+        """
         self.restChannels = _Restchannels
         self.velocityChannels = 4
         self.channels = self.velocityChannels+ _Restchannels       # +4 velocity channels
