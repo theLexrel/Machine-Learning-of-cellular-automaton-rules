@@ -560,7 +560,7 @@ def Thesis_realData(show=True):
     rule30 = [0, 0, 0, 1, 1, 1, 1, 0]
     physical = [1,0.2,1,1,1,0,0,0]
     rebuildTransList = [rule30,physical]
-    rebuildName  =["deterministic rule", "physical interaction"]
+    rebuildName  =["deterministic rule", "stochastic rule"]
     numStat = 100
     for number, transitions in enumerate(rebuildTransList):
         rebuildCell.setTransition(transitions)
@@ -618,7 +618,7 @@ def Thesis_realData(show=True):
         displaymatrix = np.flip(rebuildMatrix,axis=0)
         ax.pcolor(displaymatrix,cmap = 'binary',edgecolors='gray',vmin=False,vmax=True)
         ax2 = fig.add_subplot(1,2,2,sharey=ax)
-        ax2.set_title("recreation" )
+        ax2.set_title("reconstruction" )
         ax2.set_xlabel("Node")
         #ax2.set_yticks([0,int(rebuildCell.nRows/5),int(2*rebuildCell.nRows/5),int(3*rebuildCell.nRows/5),int(4*rebuildCell.nRows/5),rebuildCell.nRows], labels= [rebuildCell.nRows,int(4*rebuildCell.nRows/5),int(3*rebuildCell.nRows/5),int(2*rebuildCell.nRows/5),int(rebuildCell.nRows/5),0])
         #ax2.set_ylabel("Iteration")
