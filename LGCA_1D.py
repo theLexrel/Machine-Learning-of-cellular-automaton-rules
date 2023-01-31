@@ -53,9 +53,24 @@ def timeSeriesAnalysis(timeSeries):
     return anArray
 
 class MLonLGCA:
-
+    """
+    This class is the heart of the code. There are multiple methods which take in a time series, split it into
+    inputs and outputs and feed both into the ML algorithm for analysis.
+    """
     def __init__(self,_Restchannels,_interaction='total',_interactionMode=True,_delta=False):
-        
+        """
+        There are 2 modes set up:
+        _interactionMode=True:  this is the ML algorithm version of section 6.2, with which the 
+                                interaction strength can be extracted
+        _interactionMode=False: the version of section 6.3 which performs a linear approximation
+        ........
+        _interaction: dictates the interaction term input if _interactionMode=True
+            -'alignment': input for interaction alignment, total flux in interaction neighborhood
+            -'aggregation': input for aggregation, mass gradient in interaction neighborhood
+            -'total': the 'total version' contains both of the above
+            - else: if non of the above, then random walk is implemented with input = 1
+        _delta: dictates whether or not the delta-fct approx is included if _interactionMode=False
+        """
         self.interImple = _interaction
         self.interactionMode = _interactionMode
         self.restChannels = _Restchannels
@@ -221,7 +236,10 @@ class MLonLGCA:
         return rebuild
 
     def _timeSeriesExtraction(self, timeSeries, plt_show=True,build_Stat = True, grid_search=False):
-        
+        """
+        This method will take in a time series, perfrom the algorithm and reconstruct the time series.
+        Afterwards, both are plotted together.
+        """
         time, latticeLength, channels = np.shape(timeSeries)
         timeSteps = time-1
         if(self.interactionMode):
@@ -302,7 +320,10 @@ class MLonLGCA:
             plt.show()
 
     def reconstructionTimeSeries(self, timeSeries, build_Stat = False):
-   
+        """
+        This method will take in a time series, perfrom the algorithm and reconstruct the time series.
+        The reconstructed time series are the function outputs.
+        """
         vecX, vecY = self.buildInAndOutput(timeSeries)
 
         timeIndex = TimeSeriesSplit(4)
@@ -359,6 +380,9 @@ class MLonLGCA:
             return rebuild, rebuild2, rebuildR
 
 def Thesis_ExtractionInteractionStrenght(timeSeries, interaction='unknonw',show=True):
+    """
+    Run this function to get the results for chapter 6.2.2
+    """
     time,latticeLenght,channels = np.shape(timeSeries)
     restChannels = channels-2
     lMs = MLonLGCA(restChannels,_interaction='alignment')
@@ -420,6 +444,9 @@ def Thesis_ExtractionInteractionStrenght(timeSeries, interaction='unknonw',show=
         plt.show()
 
 def Thesis_GeneralApproach(timeSeries, interaction='unknown',show=True):
+    """
+    Run this function to get the results for chapter 6.3.2
+    """
     time,latticeLenght,channels = np.shape(timeSeries)
     restChannels = channels-2
     lMW = MLonLGCA(restChannels,_interactionMode=False)
@@ -485,6 +512,9 @@ def Thesis_GeneralApproach(timeSeries, interaction='unknown',show=True):
         plt.show()
 
 def main():
+    """
+    As all of the above functions has time series as inputs, they are produced here.
+    """
     l = 100
     iter = 199
     alignment_lgca = get_lgca(restchannels = 0, geometry='lin', interaction = 'alignment',density=0.15, bc='pbc', dims = l, ib=False,beta=2)
