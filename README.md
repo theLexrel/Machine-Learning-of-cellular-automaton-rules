@@ -22,3 +22,6 @@ The python code will only run with the packages *matpltlib*, *numy* and *sklearn
 
 ## General comments on the code
 As its code was mainly written to solve the given task or the plot figures for the thesis, the focus wasn't on writting the best possible version but on writting a functional one. Especially for the CA python files, the code presented here is built from components of (many) previous versions. Hence, it inherited some aspects of them which aren't necessarily the best choice for the present code. Due to time limitations, the code doesn't have a lot of comments. 
+This is mainly a problem for the CA code, which was intened to be used only by the author and was written without knowledge that it would have to be published. In the constrcution of the LGCA code, on the other hand, an effort was made to increase the readibily as there was the possibility that it could be of interest for other members of the IMC groupe.  
+
+PS: My spelling is terrible which will be reflected in the comments (and names of variables).
